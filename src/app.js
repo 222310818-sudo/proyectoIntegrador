@@ -20,9 +20,14 @@ const path = require('path');
 const app = express();
 app.use('/uploads', express.static(path.join(process.cwd(), 'src', 'uploads')));
 
+const cors = require('cors');
+
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: [
+    'http://localhost:3000',
+    'https://lumina-touch-guide.vercel.app'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
